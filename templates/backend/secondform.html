@@ -1,0 +1,258 @@
+{% extends "backend/backlayout.html" %}
+{% load humanize %}
+{% block content %}
+{% load static %}
+<style>
+  .highcharts-figure,
+  .highcharts-data-table table {
+    min-width: 360px;
+    max-width: 800px;
+    margin: 1em auto;
+  }
+  
+  .highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+  }
+  
+  .highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+  }
+  
+  .highcharts-data-table td,
+  .highcharts-data-table th,
+  .highcharts-data-table caption {
+    padding: 0.5em;
+  }
+  
+  .highcharts-data-table thead tr,
+  .highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+  }
+  
+  .highcharts-data-table tr:hover {
+    background: #f1f7ff;
+  }
+</style>
+<div class="boxcontent2">    
+      <script src="{% static 'highcharts/highcharts.js' %}"></script>
+      <script src="{% static 'highcharts/modules/series-label.js' %}"></script>
+      <script src="{% static 'highcharts/modules/exporting.js' %}"></script>
+      <script src="{% static 'highcharts/modules/export-data.js' %}"></script>
+      <script src="{% static 'highcharts/modules/accessibility.js' %}"></script>
+      <figure class="highcharts-figure">
+        <div id="container"></div>
+      </figure>
+      <script type="text/javascript">
+        Highcharts.chart('container', {
+            chart: {
+                type: 'line'  
+            },
+            title: {
+                text: 'Line Chart Monthly Data Count'
+            },
+            xAxis: {
+                categories: {{ month_names|safe }}
+            },
+            yAxis: {
+                title: {
+                    text: 'จำนวนข้อมูลทั้งหมด'
+                }
+            },
+            series: [{
+              name: 'ข้อมูลทั้งหมด',
+              data: {{ count_data|safe }}
+            },
+            {
+              name: 'จำนวนยื่นแทน',
+              data: {{ filed_count_data1|safe }}
+            },
+            {
+              name: 'จำนวนยื่นด้วยตัวเอง',
+              data: {{ filed_count_data2|safe }}
+            },
+            {
+              name: 'จำนวนคนอายุ 0-18 ปี',
+              data: {{ age_count_data1|safe }}
+            },
+            {
+              name: 'จำนวนคนอายุ 19-59 ปี',
+              data: {{ age_count_data2|safe }}
+            }, 
+            {
+                name: 'จำนวนคนอายุ 60 ปีขึ้นไป',
+                data: {{ age_count_data3|safe }}
+            }],         
+            
+        });
+      </script>
+        
+      {% comment %} <script type="text/javascript">
+        Highcharts.chart('container', {
+
+          title: {
+            text: 'Dashboard',
+            align: 'left'
+          },
+        
+          subtitle: {
+            text: 'Line Chart',
+            align: 'left'
+          },
+        
+          yAxis: {
+            title: {
+              text: 'Total Data'
+            }
+          },
+        
+          xAxis: {
+            categories: {{ month_names|safe }}
+          },      
+        
+          legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+          },
+        
+          plotOptions: {
+
+          },
+        
+          series: [{
+            name: 'จำนวนยื่นด้วยตัวเอง',
+            data: [{{filedCount1}},{{month_counts}}]
+          }, {
+            name: 'จำนวนยื่นแทน',
+            data: [{{filedCount2}},{{month_counts}}]
+          }, {
+            name: 'จำนวนคนอายุ 0-18 ปี',
+            data: [{{ageCount1}},{{month_counts}}]
+          }, {
+            name: 'จำนวนคนอายุ 19-59 ปี',
+            data: [{{ageCount2}},{{month_counts}}]
+          }, {
+            name: 'จำนวนคนอายุ 60 ปีขึ้นไป',
+            data: [{{ageCount3}},{{month_counts}}]
+          }],
+        
+          responsive: {
+            rules: [{
+              condition: {
+                maxWidth: 500
+              },
+              chartOptions: {
+                legend: {
+                  layout: 'horizontal',
+                  align: 'center',
+                  verticalAlign: 'bottom'
+                }
+              }
+            }]
+          }
+        
+        });
+    </script> {% endcomment %}
+    {% comment %} <script type="text/javascript">
+      Highcharts.chart('container', {
+          chart: {
+              type: 'column'
+          },
+          title: {
+              text: 'Data by Month'
+          },
+          xAxis: {
+              categories: [
+                  {% for month in myFilter.form.fields.date.choices %}
+                      '{{ month.0 }}',
+                  {% endfor %}
+              ],
+              crosshair: true
+          },
+          yAxis: {
+              min: 0,
+              title: {
+                  text: 'Count'
+              }
+          },
+          series: [{
+              name: 'Data',
+              data: {% url 'chart' as chart_url %}"{{ chart_url }}",
+          }],
+      });
+  </script> {% endcomment %}
+</div>
+  
+
+<!-- ตารางบทความ -->
+<div class="block full">
+    <!-- All Title -->    
+    <div class="block-title">
+        <div class="block-options pull-right">
+            <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="Settings"><i class="fa fa-cog"></i></a>
+        </div>
+        <h2><strong>ข้อมูลทั้งหมด</strong></h2>
+    </div>
+    <div class="card card-body" align="right">        
+            <form method="get">                
+                {{ myFilter.form }}                        
+                <button class="btn btn-primary" type="submit">Search</button>      
+                                
+            </form>                        
+    </div>        
+    </div>
+    <!-- Title -->
+
+    <!--Content -->
+    <table id="ecom-products" class="table table-bordered table-striped table-vcenter">
+        <thead>
+            <tr>                              
+                <th class="hidden-xs text-center">ชื่อ</th>                
+                <th class="hidden-xs text-center">เลขบัตรประชาชน</th>
+                <th class="hidden-xs text-center">ที่อยู่</th>
+                <th class="hidden-xs text-center">อำเภอ</th>
+                <th class="hidden-xs text-center">ตำบล</th>
+                <th class="hidden-xs text-center">เพศ</th>
+                <th class="hidden-xs text-center">อายุุ</th>                             
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+           {% for data in datas %}
+           <tr>                               
+                <td class="hidden-xs text-center"><strong>{{data.name}}</strong></td>                
+                <td class="hidden-xs text-center">{{data.nationalID}}</td>
+                <td class="hidden-xs text-center">{{data.address}}</td>
+                <td class="hidden-xs text-center">{{data.district}}</td>
+                <td class="hidden-xs text-center">{{data.subdictrict}}</td>
+                <td class="hidden-xs text-center">{{data.gender}}</td>
+                <td class="hidden-xs text-center">{{data.age}}</td>
+                <td class="hidden-xs text-center">{{data.date}}</td>                                                             
+                <td class="text-center">
+                  <div class="btn-group btn-group-xs">
+                      <a href="{% url 'editData' data.id %}" data-toggle="tooltip" title="Edit" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                      <a href="{% url 'showData' data.id %}" data-toggle="tooltip" title="View" class="btn btn-default"><i class="fa fa-id-card"></i></a>
+                      <a href="{% url 'deleteData' data.id %}" data-toggle="tooltip" onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่ ? ')" title="Delete" class="btn btn-xs btn-danger"><i class="fa fa-times"></i></a>
+                      
+                  </div>
+              </td>
+            </tr>
+           {% endfor %}
+        </tbody>
+    </table>
+    <!-- END All Products Content -->
+</div>
+{% endblock %}
