@@ -10,5 +10,5 @@ urlpatterns = [
     path('editData/<int:id>',editData,name="editData"),
     path('updateData/<int:id>',updateData,name="updateData"),
     path('showData/<int:id>',showData,name="showData"),
-    # path('my-model/', MyModelMonthArchiveView.as_view(), name='panel'),
+    
 ]

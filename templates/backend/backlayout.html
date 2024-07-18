@@ -1,152 +1,144 @@
 <html class="no-js" lang="en">
-    <head>
-        <meta charset="utf-8">
-        {% load static %}        
-        {% load humanize %}
-        <title>DATA FORM</title>
-        <meta name="robots" content="noindex, nofollow">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
-        <!-- Stylesheets -->
-        <!-- Bootstrap is included in its original form, unaltered -->
-        <link rel="stylesheet" href="{% static 'backend/css/bootstrap.min.css' %}">
-
-        <!-- Related styles of various icon packs and plugins -->
-        <link rel="stylesheet" href="{% static 'backend/css/plugins.css' %}">
-
-        <!-- The main stylesheet of this static. All Bootstrap overwrites are defined in here -->
-        <link rel="stylesheet" href="{% static 'backend/css/main.css' %}">
-
-        <!-- Include a specific file here from css/themes/ folder to alter the default theme of the static -->
-
-        <!-- The themes stylesheet of this static (for using specific theme color in individual elements - must included last) -->
-        <link rel="stylesheet" href="{% static 'backend/css/themes.css' %}">
-        <!-- END Stylesheets -->
-
-        <!-- Modernizr (browser feature detection library) -->
-        <script src="{% static 'backend/js/vendor/modernizr.min.js' %}"></script>
-        {% block header%}
-        {% endblock %}        
-    </head>
-    <body>
-        <div id="page-wrapper">
-            <div id="page-container" class="sidebar-partial sidebar-visible-lg sidebar-no-animations">
-                <!-- Main Sidebar -->
-                <div id="sidebar">
-                    <!-- Wrapper for scrolling functionality -->
-                    <div id="sidebar-scroll">
-                        <!-- Sidebar Content -->
-                        <div class="sidebar-content">
-                            <!-- Brand -->
-                            <a href="{% url 'panel' %}" class="sidebar-brand">
-                                <i class=""></i><span class="sidebar-nav-mini-hide"><strong>DATA</strong>FORM</span>
-                            </a>
-                            <!-- END Brand -->                            
-                            <!-- Sidebar Navigation -->                            
-                            <ul class="sidebar-nav">                                
-                                <a href="{% url 'panel2' %}" class="sidebar-brand">
-                                    <i class=""></i><span class="sidebar-nav-mini-hide"><strong>Second</strong>Form</span>
-                                </a>                                                                
-                            </ul>
-                            <!-- END Sidebar Navigation -->
-                        </div>
-                        <!-- END Sidebar Content -->
-                    </div>
-                    <!-- END Wrapper for scrolling functionality -->
-                </div>
-                <!-- END Main Sidebar -->
-
-                <!-- Main Container -->
-                <div id="main-container">
-                    <header class="navbar navbar-default">
-                        <!-- Left Header Navigation -->
-                        <ul class="nav navbar-nav-custom">
-                            <!-- Main Sidebar Toggle Button -->
-                            <li>
-                                <a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar');this.blur();">
-                                    <i class="fa fa-bars fa-fw"></i>
-                                </a>
-                            </li>
-                            <!-- END Main Sidebar Toggle Button -->
-                        </ul>
-                        <!-- END Left Header Navigation -->
-                        <!-- Search Form -->
-                        <form action="page_ready_search_results.html" method="post" class="navbar-form-custom">
-                            <div class="form-group">
-                                <input type="text" id="top-search" name="top-search" class="form-control" placeholder="Search..">
-                            </div>
-                        </form>
-                        <!-- END Search Form -->
-
-                        <!-- Right Header Navigation -->
-                        <ul class="nav navbar-nav-custom pull-right">
-                            <!-- User Dropdown -->
-                            <li class="dropdown">
-                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="{% static 'backend/img/placeholders/avatars/avatar2.jpg' %}" alt="avatar"> <i class="fa fa-angle-down"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
-                                    <li class="dropdown-header text-center">บัญชีผู้ใช้</li>
-                                    <li class="divider"></li>                                    
-                                    <li class="divider"></li>
-                                    <li>                                     
-                                        
-                                        <a href="{%url 'panel'%}" target="_blank">
-                                            <i class="fa fa-user fa-fw pull-right"></i>
-                                            ดูบทความของฉัน
-                                        </a>
-
-                                        <!-- Opens the user settings modal that can be found at the bottom of each page (page_footer.html in PHP version) -->
-                                        <a href="/"><i class="fa fa-ban fa-fw pull-right"></i> กลับสู่หน้าหลัก</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- END User Dropdown -->
-                        </ul>
-                        <!-- END Right Header Navigation -->
-                    </header>
-                    <!-- END Header -->
-                    
-                    <!-- Page content -->
-                    <div id="page-content" >
-                        <!-- Mini Top Stats Row -->
-                        <div class="row" >
-                            <div class="col-sm-6 col-lg-3" >
-                                <!-- Widget -->
-                                <a href="{% url 'displayForm' %}" class="widget widget-hover-effect1">
-                                    <div class="widget-simple">
-                                        <div class="widget-icon pull-left themed-background-autumn animation-fadeIn">
-                                            <i class="fa fa-file-text"></i>
-                                        </div>
-                                        <h3 class="widget-content animation-pullDown">
-                                            เพิ่ม<strong>ข้อมูล</strong>
-                                            <small>ของคุณที่นี่!</small>
-                                        </h3>
-                                    </div>
-                                </a>
-                                <!-- END Widget -->
-                            </div>                                                       
-                            
-                        </div>
-                        <!-- END Mini Top Stats Row -->
-                        {% block content%}
-                        {% endblock %}
-                    </div>
-                    <!-- END Page Content -->
-                </div>
-                <!-- END Main Container -->
+  <head>
+    <meta charset="utf-8" />
+    {% load static %} {% load humanize %}
+    <title>DATA FORM</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,user-scalable=0"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'backend/css/bootstrap.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'backend/css/plugins.css' %}" />
+    <link rel="stylesheet" href="{% static 'backend/css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'backend/css/themes.css' %}" />
+    <script src="{% static 'backend/js/vendor/modernizr.min.js' %}"></script>
+    {% block header%} {% endblock %}
+  </head>
+  <body>
+    <div id="page-wrapper">
+      <div
+        id="page-container"
+        class="sidebar-partial sidebar-visible-lg sidebar-no-animations"
+      >
+        <div id="sidebar">
+          <div id="sidebar-scroll">
+            <div class="sidebar-content">
+              <a href="{% url 'panel' %}" class="sidebar-brand">
+                <i class=""></i
+                ><span class="sidebar-nav-mini-hide"
+                  ><strong>DATA</strong>FORM</span
+                >
+              </a>
+              <ul class="sidebar-nav">
+                <a href="{% url 'panel2' %}" class="sidebar-brand">
+                  <i class=""></i
+                  ><span class="sidebar-nav-mini-hide"
+                    ><strong>Second</strong>Form</span
+                  >
+                </a>
+              </ul>
             </div>
-            <!-- END Page Container -->
+          </div>
         </div>
-        <!-- END Page Wrapper -->
-        <!-- Scroll to top link, initialized in js/app.js - scrollToTop() -->
-        <a href="#" id="to-top"><i class="fa fa-angle-double-up"></i></a>
-        <!-- jQuery, Bootstrap.js, jQuery plugins and Custom JS code -->
-        <script src="{% static 'backend/js/vendor/jquery.min.js' %}"></script>
-        <script src="{% static 'backend/js/vendor/bootstrap.min.js' %}"></script>
-        <script src="{% static 'backend/js/plugins.js' %}"></script>
-        <script src="{% static 'backend/js/app.js' %}"></script>
+        <div id="main-container">
+          <header class="navbar navbar-default">
+            <ul class="nav navbar-nav-custom">
+              <li>
+                <a
+                  href="javascript:void(0)"
+                  onclick="App.sidebar('toggle-sidebar');this.blur();"
+                >
+                  <i class="fa fa-bars fa-fw"></i>
+                </a>
+              </li>
+            </ul>
+            <form
+              action="page_ready_search_results.html"
+              method="post"
+              class="navbar-form-custom"
+            >
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="top-search"
+                  name="top-search"
+                  class="form-control"
+                  placeholder="Search.."
+                />
+              </div>
+            </form>
+            <ul class="nav navbar-nav-custom pull-right">
+              <li class="dropdown">
+                <a
+                  href="javascript:void(0)"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                >
+                  <img
+                    src="{% static 'backend/img/placeholders/avatars/avatar2.jpg' %}"
+                    alt="avatar"
+                  />
+                  <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+                  <li class="dropdown-header text-center">บัญชีผู้ใช้</li>
+                  <li class="divider"></li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="{%url 'panel'%}" target="_blank">
+                      <i class="fa fa-user fa-fw pull-right"></i>
+                      ดูบทความของฉัน
+                    </a>
 
-        <script src="{% static 'backend/js/pages/ecomProducts.js' %}"></script>
-        <script>$(function(){ EcomProducts.init(); });</script>
-    </body>
+                    <a href="/"
+                      ><i class="fa fa-ban fa-fw pull-right"></i>
+                      กลับสู่หน้าหลัก</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </header>
+          <div id="page-content">
+            <div class="row">
+              <div class="col-sm-6 col-lg-3">
+                <a
+                  href="{% url 'displayForm' %}"
+                  class="widget widget-hover-effect1"
+                >
+                  <div class="widget-simple">
+                    <div
+                      class="widget-icon pull-left themed-background-autumn animation-fadeIn"
+                    >
+                      <i class="fa fa-file-text"></i>
+                    </div>
+                    <h3 class="widget-content animation-pullDown">
+                      เพิ่ม<strong>ข้อมูล</strong>
+                      <small>ของคุณที่นี่!</small>
+                    </h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+            {% block content%} {% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#" id="to-top"><i class="fa fa-angle-double-up"></i></a>
+    <script src="{% static 'backend/js/vendor/jquery.min.js' %}"></script>
+    <script src="{% static 'backend/js/vendor/bootstrap.min.js' %}"></script>
+    <script src="{% static 'backend/js/plugins.js' %}"></script>
+    <script src="{% static 'backend/js/app.js' %}"></script>
+    <script src="{% static 'backend/js/pages/ecomProducts.js' %}"></script>
+    <script>
+      $(function () {
+        EcomProducts.init();
+      });
+    </script>
+  </body>
 </html>

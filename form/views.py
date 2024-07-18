@@ -10,7 +10,6 @@ from django.db.models.functions import ExtractMonth
 from django.db.models import Count
 import calendar
 
-# Create your views here.
 def get_monthly_count(qs):
     monthly_count = (
         qs.annotate(month=ExtractMonth('date'))

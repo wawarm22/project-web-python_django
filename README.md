@@ -1,3 +1,3 @@
 welcome to project python django for web application
 
-Run by Command 'pytond manage.py runserver'
+Run by Command 'python manage.py runserver'

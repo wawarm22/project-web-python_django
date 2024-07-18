@@ -97,109 +97,13 @@
             }],         
             
         });
-      </script>
-        
-      {% comment %} <script type="text/javascript">
-        Highcharts.chart('container', {
-
-          title: {
-            text: 'Dashboard',
-            align: 'left'
-          },
-        
-          subtitle: {
-            text: 'Line Chart',
-            align: 'left'
-          },
-        
-          yAxis: {
-            title: {
-              text: 'Total Data'
-            }
-          },
-        
-          xAxis: {
-            categories: {{ month_names|safe }}
-          },      
-        
-          legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle'
-          },
-        
-          plotOptions: {
-
-          },
-        
-          series: [{
-            name: 'จำนวนยื่นด้วยตัวเอง',
-            data: [{{filedCount1}},{{month_counts}}]
-          }, {
-            name: 'จำนวนยื่นแทน',
-            data: [{{filedCount2}},{{month_counts}}]
-          }, {
-            name: 'จำนวนคนอายุ 0-18 ปี',
-            data: [{{ageCount1}},{{month_counts}}]
-          }, {
-            name: 'จำนวนคนอายุ 19-59 ปี',
-            data: [{{ageCount2}},{{month_counts}}]
-          }, {
-            name: 'จำนวนคนอายุ 60 ปีขึ้นไป',
-            data: [{{ageCount3}},{{month_counts}}]
-          }],
-        
-          responsive: {
-            rules: [{
-              condition: {
-                maxWidth: 500
-              },
-              chartOptions: {
-                legend: {
-                  layout: 'horizontal',
-                  align: 'center',
-                  verticalAlign: 'bottom'
-                }
-              }
-            }]
-          }
-        
-        });
-    </script> {% endcomment %}
-    {% comment %} <script type="text/javascript">
-      Highcharts.chart('container', {
-          chart: {
-              type: 'column'
-          },
-          title: {
-              text: 'Data by Month'
-          },
-          xAxis: {
-              categories: [
-                  {% for month in myFilter.form.fields.date.choices %}
-                      '{{ month.0 }}',
-                  {% endfor %}
-              ],
-              crosshair: true
-          },
-          yAxis: {
-              min: 0,
-              title: {
-                  text: 'Count'
-              }
-          },
-          series: [{
-              name: 'Data',
-              data: {% url 'chart' as chart_url %}"{{ chart_url }}",
-          }],
-      });
+      </script>     
   </script> {% endcomment %}
 </div>
   
 
-<!-- ตารางบทความ -->
-<div class="block full">
-    <!-- All Title -->    
+
+<div class="block full">      
     <div class="block-title">
         <div class="block-options pull-right">
             <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="Settings"><i class="fa fa-cog"></i></a>
@@ -213,10 +117,7 @@
                                 
             </form>                        
     </div>        
-    </div>
-    <!-- Title -->
-
-    <!--Content -->
+    </div>    
     <table id="ecom-products" class="table table-bordered table-striped table-vcenter">
         <thead>
             <tr>                              
@@ -252,7 +153,6 @@
             </tr>
            {% endfor %}
         </tbody>
-    </table>
-    <!-- END All Products Content -->
+    </table>    
 </div>
 {% endblock %}

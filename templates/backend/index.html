@@ -267,9 +267,7 @@
         });
     </script>    
 </div>
-<!-- ตารางบทความ -->
-<div class="block full">
-    <!-- All Title -->    
+<div class="block full">    
     <div class="block-title">
         <div class="block-options pull-right">
             <a href="javascript:void(0)" class="btn btn-alt btn-sm btn-default" data-toggle="tooltip" title="Settings"><i class="fa fa-cog"></i></a>
@@ -309,8 +307,7 @@
                 <td class="hidden-xs text-center">{{data.district}}</td>
                 <td class="hidden-xs text-center">{{data.subdictrict}}</td>
                 <td class="hidden-xs text-center">{{data.gender}}</td>
-                <td class="hidden-xs text-center">{{data.age}}</td>
-                {% comment %} <td class="hidden-xs text-center">{{data.date}}</td>  {% endcomment %}
+                <td class="hidden-xs text-center">{{data.age}}</td>                
                 <td class="text-center">
                   <div class="btn-group btn-group-xs">
                       <a href="{% url 'editData' data.id %}" data-toggle="tooltip" title="Edit" class="btn btn-default"><i class="fa fa-pencil"></i></a>
@@ -322,7 +319,6 @@
             </tr>
            {% endfor %}
         </tbody>
-    </table>
-    <!-- END All Products Content -->
+    </table>    
 </div>
 {% endblock %}
